@@ -1,0 +1,24 @@
+# Checklist final de QA e apresentação
+
+- [ ] `source .venv/bin/activate` e `python -m pytest -q` passam.
+- [ ] `/saude` retorna `{"status":"ok"}`.
+- [ ] Página inicial, CSS, imagens e menu aparecem em computador e celular.
+- [ ] Aviso de "PROTÓTIPO ACADÊMICO" está visível.
+- [ ] Apenas dados fictícios são usados na demonstração.
+- [ ] Inscrição com campos vazios é bloqueada.
+- [ ] CPF inválido é rejeitado, e CPF/e-mail/matrícula duplicados não geram cadastro.
+- [ ] Professor não autenticado não acessa `/professor/`.
+- [ ] Login com senha errada não entra.
+- [ ] Formulários usam token CSRF.
+- [ ] Registro de check-in duplicado não duplica horas.
+- [ ] Certificado antes da carga horária mínima é bloqueado.
+- [ ] Certificado demonstrativo exibe o nome e indicação "SEM VALIDADE INSTITUCIONAL".
+- [ ] PDF é baixado somente pelo professor autenticado.
+- [ ] Consulta de certificado não mostra CPF nem e-mail.
+- [ ] `.env`, `instance/` e `.venv` não aparecem no GitHub.
+- [ ] Demo publicada usa PostgreSQL, HTTPS e tem limite de tentativas.
+- [ ] Login no Render funciona com conta de professor **criada na nuvem**.
+- [ ] Após primeiro login, variáveis `BOOTSTRAP_...` foram removidas do Render.
+- [ ] Há plano B local para a apresentação em 16/11.
+- [ ] Critério final da certificação (20h x 75%) está identificado como pendência.
+- [ ] Não foram inseridos nem publicados dados pessoais reais.

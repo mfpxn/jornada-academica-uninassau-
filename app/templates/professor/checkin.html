@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Chamada | 6ª Jornada Acadêmica{% endblock %}
+{% block content %}
+<section class="admin-page"><div class="container admin-shell">
+<a class="admin-link" href="{{url_for('professor.painel')}}">← Voltar às atividades</a>
+<div class="admin-head"><div><span class="section-kicker">CONTROLE DE PRESENÇA</span><h1>{{atividade.titulo}}</h1><p>{{atividade.data.strftime('%d/%m/%Y')}} · {{atividade.carga_horaria}} hora(s) por participante</p></div><div class="admin-count"><strong>{{total}}</strong><span>Presenças registradas</span></div></div>
+{% with mensagens = get_flashed_messages(with_categories=true) %}{% for tipo, mensagem in mensagens %}<p class="alert alert-{{tipo}}" role="status">{{ mensagem }}</p>{% endfor %}{% endwith %}
+<div class="admin-card"><div class="admin-card-head"><h2>Lista de chamada</h2><p>Busque por nome, matrícula ou código. A lista exibe até 150 alunos por busca.</p></div>
+<form class="admin-search" method="get"><label for="q" class="sr-only">Buscar aluno</label><input id="q" name="q" type="search" maxlength="80" value="{{filtro}}" placeholder="Pesquisar aluno..."><button class="btn btn-dark" type="submit">Buscar</button></form>
+{% if participantes %}<form method="post" id="form-chamada"><input type="hidden" name="csrf_token" value="{{csrf_token()}}"><input type="hidden" name="q" value="{{filtro}}">
+<div class="admin-table-wrap"><table class="admin-table"><thead><tr><th><label class="admin-check"><input type="checkbox" id="selecionar-todos" aria-label="Selecionar todos os alunos ainda não registrados"> Todos</label></th><th>Participante</th><th>Matrícula</th><th>Status</th></tr></thead><tbody>
+{% for aluno in participantes %}<tr><td><input type="checkbox" class="aluno-checkbox" name="participante_ids" value="{{aluno.id}}" aria-label="Selecionar {{aluno.nome}}" {% if aluno.id in presentes %}checked disabled{% endif %}></td><td><strong>{{aluno.nome}}</strong><small class="admin-secondary">{{aluno.curso}}</small></td><td>{{aluno.matricula}}</td><td>{% if aluno.id in presentes %}<span class="status-pill status-success">Presente</span>{% else %}<span class="status-pill">Pendente</span>{% endif %}</td></tr>{% endfor %}
+</tbody></table></div><div class="admin-bottom"><p>Presenças já confirmadas aparecem desabilitadas para evitar duplicidade.</p><button class="btn btn-yellow" type="submit">Registrar presenças selecionadas →</button></div></form>
+{% else %}<div class="admin-empty">Nenhum aluno encontrado para esta busca.</div>{% endif %}
+</div></div></section>
+{% endblock %}
+{% block scripts %}<script defer src="{{url_for('static', filename='js/checkin.js')}}"></script>{% endblock %}

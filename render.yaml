@@ -1,0 +1,34 @@
+# Demonstração acadêmica com dados fictícios.
+services:
+  - type: web
+    name: jornada-academica-demo
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --bind 0.0.0.0:$PORT --workers 1 --threads 2 --timeout 90 run:app
+    healthCheckPath: /saude
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: jornada-academica-db
+          property: connectionString
+      - key: APP_ENV
+        value: demo
+      - key: HTTPS_ONLY
+        value: "1"
+      - key: TRUST_PROXY
+        value: "1"
+      - key: CERTIFICATE_MIN_HOURS
+        value: "20"
+      - key: BOOTSTRAP_PROFESSOR_USER
+        sync: false
+      - key: BOOTSTRAP_PROFESSOR_PASSWORD
+        sync: false
+
+databases:
+  - name: jornada-academica-db
+    plan: free
+    databaseName: jornada_academica
+    user: jornada_user

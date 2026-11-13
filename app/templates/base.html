@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071e48">
+  <meta name="description" content="Sistema de Gestão da 6ª Jornada Acadêmica da UNINASSAU Teresina.">
+  <title>{% block title %}6ª Jornada Acadêmica | UNINASSAU Teresina{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/experience.css') }}">
+  {% block extra_head %}{% endblock %}
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/intro-definitiva.css') }}?v=1">
+</head>
+<body>
+
+
+  
+
+  <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+  {% if config.get('DEMO_ONLY', True) %}
+  <div class="demo-site-banner" role="note">PROTÓTIPO ACADÊMICO · Demonstração sem validade institucional. Use apenas dados fictícios.</div>
+  {% endif %}
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="{{ url_for('public.inicio') }}" aria-label="Página inicial da Jornada Acadêmica">
+        <span class="brand-mark">6ª</span><span><strong>Jornada Acadêmica</strong><small>UNINASSAU · TERESINA</small></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-controls="menu" aria-expanded="false" aria-label="Abrir menu">☰</button>
+      <nav class="nav" id="menu" aria-label="Navegação principal">
+        <a href="{{ url_for('public.inicio') }}#sobre">O evento</a>
+        <a href="{{ url_for('public.inicio') }}#etapas">Como funciona</a>
+        {% if current_user.is_authenticated %}
+        <a href="{{ url_for('professor.painel') }}">Painel do professor</a>
+        <form class="nav-logout" action="{{url_for('professor.sair')}}" method="post"><input type="hidden" name="csrf_token" value="{{csrf_token()}}"><button type="submit">Sair</button></form>
+        {% else %}
+        <a href="{{ url_for('professor.login') }}">Área do professor</a>
+        {% endif %}
+        <a class="btn btn-small btn-yellow" href="{{ url_for('public.inscricao') }}">Fazer inscrição ↗</a>
+      </nav>
+    </div>
+  </header>
+  <main id="conteudo">{% block content %}{% endblock %}</main>
+  <footer class="footer">
+    <div class="container footer-content">
+      <div><strong>6ª Jornada Acadêmica</strong><p>Centro Universitário Maurício de Nassau · Teresina, PI</p></div>
+      <span>Projeto acadêmico · Sistema de Gestão da Jornada</span>
+    </div>
+  </footer>
+  <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script defer src="{{ url_for('static', filename='js/experience.js') }}"></script>
+  {% block scripts %}{% endblock %}
+<script defer
+src="{{ url_for('static', filename='js/intro-definitiva.js') }}?v=1"></script>
+</body>
+</html>

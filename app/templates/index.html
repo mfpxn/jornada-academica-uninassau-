@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block title %}6ª Jornada Acadêmica | Uma experiência que transforma{% endblock %}
+{% block content %}
+<section class="xp-hero" id="inicio" aria-labelledby="xp-title">
+  <div class="xp-hero-grid" aria-hidden="true"></div>
+  <div class="xp-hero-glow xp-glow-a" aria-hidden="true"></div>
+  <div class="xp-hero-glow xp-glow-b" aria-hidden="true"></div>
+  <div class="container xp-hero-layout">
+    <div class="xp-hero-copy" data-reveal>
+      <span class="xp-kicker"><span class="xp-live-dot"></span> UNINASSAU TERESINA <span class="xp-kicker-sep">/</span> EDIÇÃO 2026</span>
+      <div class="xp-edition"><span class="xp-edition-number">06</span><span class="xp-edition-line"></span><span>CONEXÕES QUE<br>TRANSFORMAM</span></div>
+      <h1 id="xp-title">Ideias que <span class="xp-gradient-word">movem</span> o futuro.</h1>
+      <p class="xp-hero-lead">A 6ª Jornada Acadêmica conecta ensino, pesquisa, extensão, inovação e pessoas. Faça parte de uma experiência criada para transformar conhecimento em possibilidades.</p>
+      <div class="xp-hero-actions">
+        <a class="xp-button xp-button-primary" href="{{ url_for('public.inscricao') }}"><span>Quero participar</span><span class="xp-button-icon" aria-hidden="true">↗</span></a>
+        <a class="xp-button xp-button-ghost" href="#sobre"><span>Explorar o evento</span><span aria-hidden="true">↓</span></a>
+        <button class="ja-intro-replay" type="button" data-ja-intro-replay aria-label="Rever abertura animada com logo da UNINASSAU"><span aria-hidden="true">↻</span> Rever abertura</button>
+      </div>
+      <div class="xp-hero-info" aria-label="Informações do evento">
+        <div><span class="xp-mini-label">QUANDO</span><strong>09–10 DEZ</strong><span class="xp-mini-text">2026</span></div>
+        <div><span class="xp-mini-label">ONDE</span><strong>TERESINA</strong><span class="xp-mini-text">Piauí</span></div>
+        <div><span class="xp-mini-label">CARGA PREVISTA</span><strong>20 HORAS</strong><span class="xp-mini-text">A confirmar</span></div>
+      </div>
+    </div>
+    <div class="xp-stage" data-reveal aria-label="Arte oficial da 6ª Jornada Acadêmica">
+      <div class="xp-stage-halo xp-stage-halo-back" aria-hidden="true"></div>
+      <div class="xp-stage-halo xp-stage-halo-front" aria-hidden="true"></div>
+      <div class="xp-stage-dots" aria-hidden="true"></div>
+      <div class="xp-stage-core" data-tilt data-tilt-strength="6">
+        <div class="xp-poster-top"><span class="xp-poster-spark" aria-hidden="true">✳</span><span>6ª JORNADA ACADÊMICA</span><span>2026</span></div>
+        <div class="xp-poster-art"><img src="{{ url_for('static', filename='img/logo-jornada.jpeg') }}" alt="Marca oficial da 6ª Jornada Acadêmica da UNINASSAU Teresina" fetchpriority="high"></div>
+        <div class="xp-poster-footer"><span>CONHECIMENTO EM MOVIMENTO</span><span aria-hidden="true">↗</span></div>
+      </div>
+      <div class="xp-float-card xp-float-top" aria-hidden="true"><span class="xp-float-symbol">✦</span><span><strong>Ideias em movimento</strong><small>Ciência, criatividade e conexão</small></span></div>
+      <div class="xp-float-card xp-float-bottom" aria-hidden="true"><span class="xp-float-vert">05</span><span><strong>pilares para explorar</strong><small>Uma jornada de possibilidades</small></span></div>
+      <div class="xp-stage-caption" aria-hidden="true">EXPERIÊNCIA ACADÊMICA <span>·</span> TERESINA / PI</div>
+    </div>
+  </div>
+  <div class="xp-hero-bottom"><div class="container xp-bottom-inner"><span>EXPLORE A JORNADA</span><span aria-hidden="true">↓</span><span class="xp-countdown" data-event-countdown="2026-12-09T08:00:00-03:00" aria-live="off">09–10 DEZEMBRO</span></div></div>
+</section>
+
+<div class="xp-marquee" aria-label="Ensino, pesquisa, extensão, inovação e transformação"><div class="xp-marquee-track" aria-hidden="true"><span>ENSINO <b>✳</b> PESQUISA <b>✳</b> EXTENSÃO <b>✳</b> INOVAÇÃO <b>✳</b> TRANSFORMAÇÃO <b>✳</b></span><span>ENSINO <b>✳</b> PESQUISA <b>✳</b> EXTENSÃO <b>✳</b> INOVAÇÃO <b>✳</b> TRANSFORMAÇÃO <b>✳</b></span></div></div>
+
+<section class="xp-section xp-about" id="sobre" aria-labelledby="xp-about-title">
+  <div class="container">
+    <div class="xp-section-intro" data-reveal><span class="xp-label-dark"><span class="xp-label-line"></span> A EXPERIÊNCIA</span><div class="xp-section-heading"><h2 id="xp-about-title">Um encontro de <em>possibilidades.</em></h2><p>A Jornada Acadêmica reúne a comunidade universitária em torno de ideias, descobertas e oportunidades de aprendizado.</p></div></div>
+    <div class="xp-feature-grid">
+      <article class="xp-feature-card" data-reveal data-tilt data-tilt-strength="3"><span class="xp-feature-number">01 / APRENDER</span><div class="xp-feature-graphic xp-graphic-one" aria-hidden="true"><i></i><i></i><i></i></div><h3>Conhecimento em ação</h3><p>Amplie perspectivas e descubra novas formas de aprender, pesquisar e compartilhar.</p><span class="xp-card-arrow" aria-hidden="true">↗</span></article>
+      <article class="xp-feature-card xp-feature-dark" data-reveal data-tilt data-tilt-strength="3"><span class="xp-feature-number">02 / CONECTAR</span><div class="xp-feature-graphic xp-graphic-two" aria-hidden="true"><i></i><i></i><i></i></div><h3>Conexões que importam</h3><p>Encontre pessoas, compartilhe vivências e fortaleça a comunidade acadêmica.</p><span class="xp-card-arrow" aria-hidden="true">↗</span></article>
+      <article class="xp-feature-card" data-reveal data-tilt data-tilt-strength="3"><span class="xp-feature-number">03 / TRANSFORMAR</span><div class="xp-feature-graphic xp-graphic-three" aria-hidden="true"><i></i><i></i><i></i></div><h3>Novas perspectivas</h3><p>Conecte suas ideias a possibilidades de impacto dentro e fora da universidade.</p><span class="xp-card-arrow" aria-hidden="true">↗</span></article>
+    </div>
+  </div>
+</section>
+
+<section class="xp-section xp-pillars" aria-labelledby="xp-pillars-title">
+  <div class="container xp-pillars-layout"><div class="xp-pillars-intro" data-reveal><span class="xp-label-light"><span class="xp-label-line"></span> CONHECIMENTO EM MOVIMENTO</span><h2 id="xp-pillars-title">Cinco pilares.<br><em>Infinitas ideias.</em></h2><p>Navegue pelos pilares da Jornada e descubra o que cada um representa.</p><div class="xp-pillars-select" role="tablist" aria-label="Pilares da Jornada Acadêmica">
+    <button id="xp-tab-ensino" role="tab" aria-controls="xp-pillar-panel" aria-selected="true" tabindex="0" data-pillar="ensino"><span>01</span> Ensino <b aria-hidden="true">↗</b></button>
+    <button id="xp-tab-pesquisa" role="tab" aria-controls="xp-pillar-panel" aria-selected="false" tabindex="-1" data-pillar="pesquisa"><span>02</span> Pesquisa <b aria-hidden="true">↗</b></button>
+    <button id="xp-tab-extensao" role="tab" aria-controls="xp-pillar-panel" aria-selected="false" tabindex="-1" data-pillar="extensao"><span>03</span> Extensão <b aria-hidden="true">↗</b></button>
+    <button id="xp-tab-inovacao" role="tab" aria-controls="xp-pillar-panel" aria-selected="false" tabindex="-1" data-pillar="inovacao"><span>04</span> Inovação <b aria-hidden="true">↗</b></button>
+    <button id="xp-tab-transformacao" role="tab" aria-controls="xp-pillar-panel" aria-selected="false" tabindex="-1" data-pillar="transformacao"><span>05</span> Transformação <b aria-hidden="true">↗</b></button>
+  </div></div><div class="xp-pillar-card" id="xp-pillar-panel" role="tabpanel" aria-labelledby="xp-tab-ensino" tabindex="0" data-reveal><div class="xp-pillar-card-head"><span>EXPLORAR / 01</span><span class="xp-pillar-indicator" aria-hidden="true">● ● ●</span></div><div class="xp-pillar-art" aria-hidden="true"><span class="xp-art-ring xp-ring-a"></span><span class="xp-art-ring xp-ring-b"></span><span class="xp-art-ring xp-ring-c"></span><span class="xp-art-core" id="xp-pillar-glyph">✳</span></div><span class="xp-pillar-number" id="xp-pillar-number">01 / 05</span><h3 id="xp-pillar-title">Ensino</h3><p id="xp-pillar-description">Conhecimento compartilhado para abrir caminhos e ampliar horizontes.</p><span class="xp-pillar-side" aria-hidden="true">6ª JORNADA / UNINASSAU</span></div></div>
+</section>
+
+<section class="xp-section xp-journey" id="etapas" aria-labelledby="xp-journey-title"><div class="container"><div class="xp-section-intro" data-reveal><span class="xp-label-dark"><span class="xp-label-line"></span> É SIMPLES PARTICIPAR</span><div class="xp-section-heading"><h2 id="xp-journey-title">Sua jornada começa <em>aqui.</em></h2><p>Um único sistema para acompanhar as principais etapas da participação acadêmica.</p></div></div><div class="xp-journey-grid"><article class="xp-journey-step" data-reveal><div class="xp-journey-circle"><span>01</span><span aria-hidden="true">↗</span></div><h3>Faça sua inscrição</h3><p>Cadastre seus dados acadêmicos no formulário online.</p></article><article class="xp-journey-step" data-reveal><div class="xp-journey-circle"><span>02</span><span aria-hidden="true">◎</span></div><h3>Registre sua presença</h3><p>A equipe responsável valida sua participação nas atividades.</p></article><article class="xp-journey-step" data-reveal><div class="xp-journey-circle"><span>03</span><span aria-hidden="true">✧</span></div><h3>Acompanhe o certificado</h3><p>A emissão demonstrativa segue os critérios de horas confirmados.</p></article></div></div></section>
+
+<section class="xp-end" aria-labelledby="xp-end-title"><div class="container xp-end-inner"><div class="xp-end-star" aria-hidden="true">✳</div><span class="xp-label-light">O PRÓXIMO PASSO É SEU</span><h2 id="xp-end-title">O futuro se constrói <em>em conjunto.</em></h2><p>Conecte-se à 6ª Jornada Acadêmica da UNINASSAU Teresina.</p><a class="xp-button xp-button-primary" href="{{ url_for('public.inscricao') }}"><span>Iniciar inscrição</span><span class="xp-button-icon" aria-hidden="true">↗</span></a><div class="xp-end-watermark" aria-hidden="true">06</div></div></section>
+{% endblock %}

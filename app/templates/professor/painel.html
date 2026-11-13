@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Painel do professor | 6ª Jornada Acadêmica{% endblock %}
+{% block content %}
+<section class="admin-page"><div class="container admin-shell">
+  <div class="admin-head"><div><span class="section-kicker">GESTÃO ACADÊMICA</span><h1>Painel do professor</h1><p>Gerencie atividades e registre as presenças dos alunos inscritos.</p></div>
+    <div class="admin-actions"><a class="btn btn-dark" href="{{url_for('professor.frequencia')}}">Relatório de frequência</a><a class="btn btn-yellow" href="{{url_for('professor.nova_atividade')}}">+ Nova atividade</a></div></div>
+  {% with mensagens = get_flashed_messages(with_categories=true) %}{% for tipo, mensagem in mensagens %}<p class="alert alert-{{tipo}}" role="status">{{ mensagem }}</p>{% endfor %}{% endwith %}
+  <div class="admin-stats"><div><strong>{{participantes_total}}</strong><span>Participantes inscritos</span></div><div><strong>{{atividades|length}}</strong><span>Atividades cadastradas</span></div><div><strong>{{minimo}}h</strong><span>Carga horária de referência</span></div></div>
+  <div class="admin-card"><div class="admin-card-head"><h2>Atividades e chamadas</h2><p>Selecione uma atividade para fazer o check-in.</p></div>
+  {% if atividades %}<div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Atividade</th><th>Data</th><th>Duração</th><th>Presenças</th><th>Ação</th></tr></thead><tbody>
+  {% for atividade in atividades %}<tr><td><strong>{{atividade.titulo}}</strong></td><td>{{atividade.data.strftime('%d/%m/%Y')}}</td><td>{{atividade.carga_horaria}}h</td><td>{{totais.get(atividade.id, 0)}}</td><td><a class="admin-link" href="{{url_for('professor.checkin', atividade_id=atividade.id)}}">Abrir chamada →</a></td></tr>{% endfor %}
+  </tbody></table></div>{% else %}<div class="admin-empty">Nenhuma atividade cadastrada. Use <strong>Nova atividade</strong> para começar.</div>{% endif %}
+  </div>
+</div></section>
+{% endblock %}

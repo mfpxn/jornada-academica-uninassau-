@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}Frequência e certificados | 6ª Jornada Acadêmica{% endblock %}
+{% block content %}
+<section class="admin-page"><div class="container admin-shell">
+  <a class="admin-link" href="{{url_for('professor.painel')}}">← Voltar ao painel</a>
+  <div class="admin-head"><div><span class="section-kicker">FREQUÊNCIA E CERTIFICADOS</span>
+    <h1>Participação e emissão</h1>
+    <p>Os modelos em PDF são liberados somente após {{minimo}} horas registradas.</p>
+  </div></div>
+  {% with mensagens = get_flashed_messages(with_categories=true) %}
+    {% for tipo, mensagem in mensagens %}<p class="alert alert-{{tipo}}" role="status">{{ mensagem }}</p>{% endfor %}
+  {% endwith %}
+  <p class="demo-warning"><strong>Protótipo de demonstração.</strong> O arquivo usa o layout enviado, mas não possui validade institucional nem assinaturas homologadas. Confirme a regra de 20 horas versus 75% com o professor antes de usar em produção.</p>
+  <div class="admin-card">
+    <div class="admin-card-head"><h2>Horas acumuladas</h2><p>Somente presenças registradas contam na soma. Pesquise por nome ou matrícula.</p></div>
+    <form class="admin-search" method="get"><label for="q" class="sr-only">Buscar participante</label>
+      <input id="q" name="q" type="search" maxlength="80" value="{{filtro}}" placeholder="Nome ou matrícula">
+      <button type="submit" class="btn btn-dark">Buscar</button>
+    </form>
+    {% if registros %}<div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Participante</th><th>Matrícula</th><th>Horas</th><th>Situação</th><th>Certificado</th></tr></thead><tbody>
+      {% for aluno in registros %}
+      <tr><td><strong>{{aluno.nome}}</strong><small class="admin-secondary">{{aluno.curso}}</small></td>
+        <td>{{aluno.matricula}}</td><td><strong>{{aluno.horas}}h</strong></td>
+        <td>{% if aluno.horas >= minimo %}<span class="status-pill status-success">Carga horária atingida</span>
+          {% else %}<span class="status-pill">Faltam {{minimo - aluno.horas}}h</span>{% endif %}</td>
+        <td>
+          {% if aluno.horas < minimo %}<span class="admin-secondary">Aguardando frequência</span>
+          {% elif aluno.id in certificados %}
+            <div class="certificate-actions">
+              <a class="admin-link" href="{{url_for('certificados.baixar', participante_id=aluno.id)}}">Baixar PDF</a>
+              <a class="admin-link" href="{{url_for('certificados.verificar', codigo=certificados[aluno.id].codigo_verificacao)}}" target="_blank" rel="noopener">Conferir código</a>
+              {% if smtp_habilitado %}
+              <form method="post" action="{{url_for('certificados.enviar_email', participante_id=aluno.id)}}">
+                <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+                <button type="submit" class="btn btn-outline btn-tiny">{% if certificados[aluno.id].email_enviado_em %}Reenviar e-mail{% else %}Enviar por e-mail{% endif %}</button>
+              </form>
+              {% else %}<small class="admin-secondary">E-mail: configurar SMTP</small>{% endif %}
+            </div>
+          {% else %}
+            <form method="post" action="{{url_for('certificados.emitir', participante_id=aluno.id)}}">
+              <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+              <button type="submit" class="btn btn-dark btn-tiny">Gerar PDF demonstrativo</button>
+            </form>
+          {% endif %}
+        </td></tr>{% endfor %}
+    </tbody></table></div>{% else %}<div class="admin-empty">Nenhum participante encontrado.</div>{% endif %}
+  </div>
+</div></section>
+{% endblock %}

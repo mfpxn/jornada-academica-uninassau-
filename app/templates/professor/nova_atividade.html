@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Nova atividade | 6ª Jornada Acadêmica{% endblock %}
+{% block content %}
+<section class="admin-page"><div class="container admin-shell">
+<a class="admin-link" href="{{url_for('professor.painel')}}">← Voltar ao painel</a>
+<div class="admin-narrow admin-card"><span class="section-kicker">PROGRAMAÇÃO</span><h1>Cadastrar atividade</h1><p>Preencha os dados reais da palestra, oficina ou sessão. Cada presença soma a duração desta atividade uma única vez.</p>
+{% with mensagens = get_flashed_messages(with_categories=true) %}{% for tipo, mensagem in mensagens %}<p class="alert alert-{{tipo}}" role="alert">{{ mensagem }}</p>{% endfor %}{% endwith %}
+<form method="post"><input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+<div class="field"><label for="titulo">Título da atividade</label><input id="titulo" name="titulo" maxlength="140" minlength="4" placeholder="Ex.: Oficina de Inteligência Artificial" value="{{request.form.get('titulo','')}}" required></div>
+<div class="two-fields"><div class="field"><label for="data">Data</label><input id="data" name="data" type="date" value="{{request.form.get('data','')}}" required></div><div class="field"><label for="carga_horaria">Carga horária (horas inteiras)</label><input id="carga_horaria" name="carga_horaria" type="number" min="1" max="12" value="{{request.form.get('carga_horaria','')}}" required></div></div>
+<button class="btn btn-yellow" type="submit">Salvar atividade →</button></form>
+</div></div></section>
+{% endblock %}

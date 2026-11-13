@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+{% block title %}Inscrição confirmada | 6ª Jornada Acadêmica{% endblock %}
+{% block content %}
+<section class="success-section"><div class="container"><div class="success-card"><div class="success-icon">✓</div><span class="section-kicker">CADASTRO REALIZADO</span><h1>Inscrição confirmada!</h1><p>Seu cadastro foi armazenado com sucesso. Guarde o código abaixo para referência.</p><div class="protocol"><small>CÓDIGO DE INSCRIÇÃO</small><strong>{{ participante.codigo }}</strong></div><p class="success-name">Participante: <strong>{{ participante.nome }}</strong></p><p>O registro de frequência será realizado pela equipe responsável durante o evento.</p><a class="btn btn-dark" href="{{ url_for('public.inicio') }}">Voltar para o site ↗</a></div></div></section>
+{% endblock %}

@@ -1,0 +1,20 @@
+Etapa 5 acrescenta configuração de hospedagem e segurança básica.
+
+Arquivos de dados preservados ao extrair na raiz do projeto:
+- .env (NÃO incluído no ZIP)
+- .venv (NÃO incluído no ZIP)
+- instance/jornada.db (NÃO incluído no ZIP)
+- .git e histórico Git (NÃO incluído no ZIP)
+
+Sobreposição: app/*, README.md, requirements.txt, run.py; são versões
+compatíveis com as etapas anteriores. Os testes anteriores foram mantidos.
+
+Implementações novas:
+- app/security.py
+- app/__init__.py (headers, cookie, Postgres, bootstrap opcional)
+- app/templates/base.html (aviso de demonstração)
+- app/templates/inscricao.html (aviso de dados fictícios)
+- app/static/css/style.css (aviso de demonstração)
+- render.yaml, .python-version, .env.example, .gitignore
+- docs/*
+- tests/test_producao.py

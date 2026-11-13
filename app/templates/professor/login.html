@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Acesso do professor | 6ª Jornada Acadêmica{% endblock %}
+{% block content %}
+<section class="admin-page admin-center"><div class="admin-login-card">
+  <span class="section-kicker">ACESSO RESTRITO</span>
+  <h1>Área do professor</h1>
+  <p>Entre com sua conta para gerenciar as atividades e registrar a presença dos participantes.</p>
+  {% with mensagens = get_flashed_messages(with_categories=true) %}{% for tipo, mensagem in mensagens %}<p class="alert alert-{{tipo}}" role="alert">{{ mensagem }}</p>{% endfor %}{% endwith %}
+  <form method="post" action="{{ url_for('professor.login') }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <div class="field"><label for="usuario">Usuário</label><input id="usuario" name="usuario" autocomplete="username" maxlength="32" required></div>
+    <div class="field"><label for="senha">Senha</label><input id="senha" name="senha" type="password" autocomplete="current-password" required></div>
+    <button class="btn btn-yellow btn-full" type="submit">Entrar no painel →</button>
+  </form>
+  <p class="admin-help">As contas são criadas pela equipe administradora no terminal do sistema.</p>
+</div></section>
+{% endblock %}

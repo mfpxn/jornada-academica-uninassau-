@@ -1,0 +1,26 @@
+.venv/
+.env
+.env.*
+!.env.example
+instance/*
+!instance/.gitkeep
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.vscode/
+.DS_Store
+*.log
+*.pem
+*.key
+
+# Arquivos temporários e backups
+*.bak
+*.antes-*
+*.zip
