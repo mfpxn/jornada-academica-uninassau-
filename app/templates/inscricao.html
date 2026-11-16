@@ -5,7 +5,7 @@
   <div class="container form-grid">
     <aside class="form-aside"><span class="section-kicker">6ª JORNADA ACADÊMICA</span><h1>Seu próximo passo começa aqui.</h1><p>Preencha seus dados para realizar sua inscrição. O cadastro é individual.</p><div class="aside-date"><strong>09 e 10 de dezembro</strong><span>UNINASSAU · Teresina, PI</span></div><a href="{{ url_for('public.inicio') }}" class="back-link">← Voltar ao início</a></aside>
     <div class="form-panel">
-      <div class="form-heading"><span class="eyebrow dark">FORMULÁRIO DE INSCRIÇÃO</span><h2>Seus dados</h2><p>Todos os campos são obrigatórios. Nesta versão de demonstração, utilize somente dados fictícios.</p></div>
+      <div class="form-heading"><span class="eyebrow dark">FORMULÁRIO DE INSCRIÇÃO</span><h2>Seus dados</h2><p>Preencha os campos abaixo para realizar sua inscrição na 6ª Jornada Acadêmica.</p></div>
       {% with mensagens = get_flashed_messages(with_categories=true) %}
         {% if mensagens %}<div class="alerts" role="alert">{% for categoria, mensagem in mensagens %}<p class="alert alert-{{ categoria }}">{{ mensagem }}</p>{% endfor %}</div>{% endif %}
       {% endwith %}
@@ -22,7 +22,7 @@
           <div class="field"><label for="matricula">Matrícula</label><input id="matricula" name="matricula" type="text" maxlength="30" placeholder="Sua matrícula acadêmica" value="{{ dados.get('matricula', '') }}" required></div>
         </div>
         <div class="field"><label for="curso">Curso</label><input id="curso" name="curso" type="text" maxlength="120" placeholder="Ex.: Análise e Desenvolvimento de Sistemas" value="{{ dados.get('curso', '') }}" required></div>
-        <label class="consent"><input type="checkbox" name="aceite" value="sim" required><span>Esta é uma simulação acadêmica. Confirmo que utilizarei somente dados fictícios, sem inserir dados pessoais reais.</span></label>
+        <label class="consent"><input type="checkbox" name="aceite" value="sim" required><span>Declaro que os dados informados são corretos e estou ciente de que serão utilizados para processar minha inscrição, registrar minha frequência e emitir meu certificado do evento.</span></label>
         <button type="submit" class="btn btn-yellow btn-full" id="enviar-inscricao">Confirmar inscrição ↗</button>
         <p class="form-note">As inscrições duplicadas por CPF, e-mail ou matrícula são bloqueadas.</p>
       </form>
